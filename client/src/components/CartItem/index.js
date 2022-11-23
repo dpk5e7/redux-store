@@ -1,12 +1,19 @@
 import React from 'react';
-import { useStoreContext } from "../../utils/GlobalState";
+
+// Remove the useStoreContext because now it's a global context that's included in the Provider
+//import { useStoreContext } from '../../utils/GlobalState';
+
+// Add useDispatch from react-redux
+import { useDispatch } from "react-redux";
+
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 
 const CartItem = ({ item }) => {
 
-  const [, dispatch] = useStoreContext();
-
+  //const [, dispatch] = useStoreContext();
+  const dispatch = useDispatch();
+  
   const removeFromCart = item => {
     dispatch({
       type: REMOVE_FROM_CART,
